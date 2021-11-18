@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:networ_test/http/http.dart';
 import 'package:networ_test/testApi.dart';
-
+import 'package:http/http.dart' as http;
 import 'http/api_response.dart';
 import 'http/sp.dart';
 
 Future<void> main() async {
   runApp(MyApp());
   await SpUtil.getInstance();
-  Https().init(baseUrl: "http://1.15.188.149:8080/member/");
+  Https().init(baseUrl: "http://jtechback.ectg.net/users/v1");
 }
 
 class MyApp extends StatelessWidget {
@@ -54,10 +54,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed:()async{
-          ApiResponse<List<Advertise>> res =
           await TestApi.getScienceArticle();
-         res.data!.map((e) => print(e.cover)).toList();
-          if (res.status != Status.COMPLETED) return;
+          // var url = Uri.parse('http://jtechback.ectg.net/users/v1/login');
+          // var response = await http.put(url, body: {'email': 'users1_pop_crm.com', 'password': '123456'});
+          // print('Response status: ${response.statusCode}');
+          // print('Response body: ${response.body}');
+         //  ApiResponse<List<Advertise>> res =
+         //  await TestApi.getScienceArticle();
+         // res.data!.map((e) => print(e.cover)).toList();
+         //  if (res.status != Status.COMPLETED) return;
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),

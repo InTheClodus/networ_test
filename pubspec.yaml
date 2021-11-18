@@ -33,6 +33,7 @@ dependencies:
   synchronized: ^3.0.0
   dio: ^4.0.1
   alert: ^2.0.1
+  http: ^0.13.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

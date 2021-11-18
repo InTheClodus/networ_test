@@ -5,22 +5,20 @@ import 'http/api_response.dart';
 import 'http/http.dart';
 
 class TestApi {
-  static String _article = '/getAllAdvertise';
+  static String _article = '/login';
 
-  static Future<ApiResponse<List<Advertise>>> getScienceArticle() async {
+  static Future<Null> getScienceArticle() async {
     try {
-      final response =
-      await Https.instance.get(_article);
-      List<Advertise> data =[];
-      response["data"].map((e)=>data.add(Advertise.fromJson(e))).toList();
-      return ApiResponse.completed(data);
+      final response = await Https.instance.put(_article,
+          params: {"email": "users1@pop_crm.com", "password": "123456"});
+      print(response);
+      // return ApiResponse.completed(data);
     } on DioError catch (e) {
-      var a = AppException.create(e);
-      return ApiResponse.error(a);
+      // var a = AppException.create(e);
+      // return ApiResponse.error(a);
     }
   }
 }
-
 
 class Advertise {
   int? id;
